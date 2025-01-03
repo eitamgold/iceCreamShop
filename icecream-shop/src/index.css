@@ -1,0 +1,114 @@
+header {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  height: 70px;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+a {
+  margin: 0 1px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+  padding: 0 7px;
+  border-width: 2px;
+  font-size: 18px;
+  background-color: black;
+  color: white;
+  height: 93%;
+  align-content: center;
+  text-decoration: none;
+
+}
+
+a:hover{
+  background-color: rgb(107, 107, 107);
+}
+
+h2 {
+  margin-right: auto;
+  margin-left: 4px;
+  color: white;
+}
+
+body {
+  background-color: aqua;
+  margin: 0;
+  font-family: Arial;
+}
+
+.home-page{
+  padding: 0 15px;
+}
+
+.filter-button{
+  width: 25%;
+  height: 30px;
+}
+
+.nav {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  padding-bottom: 7px;
+  background-color: black;
+}
+
+.nav-input {
+  height: 87%;
+  padding-left: 6px;
+  flex: 1;
+  margin-right: -2px;
+}
+
+main {
+  padding: 3px 3px;
+}
+
+.flavor-box{
+  width: 1fr;
+  min-width: 130px;
+  height: 130px;
+  border-style: solid;
+  margin: 0 3px;
+}
+
+@media (max-width: 700px) {
+  .flavors-grid{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 5px;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 999px) {
+  .flavors-grid{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 5px;
+  }
+}
+
+
+@media (max-width: 1300px) and (min-width:1000px) {
+  .flavors-grid{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 5px;
+  }
+}
+
+@media (min-width: 1301px) {
+  .flavors-grid{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 5px;
+  }
+}
