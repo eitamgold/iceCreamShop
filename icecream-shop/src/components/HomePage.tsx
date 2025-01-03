@@ -1,54 +1,40 @@
-import React from 'react'
-import FlavorConstarctor from './flavorConstarctor'
-import { useState } from 'react';
+import React from 'react';
+import { useOrder } from '../OrderContext';
+import FlavorConstarctor from './flavorConstarctor';
 
 type Flavor = {
   name: string;
-  price: number;
   isKosher: boolean;
   isGlutenFree: boolean;
   isDairyFree: boolean;
   key: number;
   color?: string;
-}
-
-type HomePageProps = {
-  setOrderList: React.Dispatch<React.SetStateAction<string[]>>;
-  flavors: Flavor[]
+  price: number;
 };
 
-const HomePage: React.FC<HomePageProps> = ({setOrderList, flavors}) => {
-  const [filter, setFilter] = useState<string>('all');
+type HomePageProps = {
+  flavors: Flavor[];
+};
 
-  const filteredFlavors = flavors.filter((flavor) => {
-    if (filter === 'all') return true;
-    if (filter === 'kosher') return flavor.isKosher;
-    if (filter === 'dairyFree') return flavor.isDairyFree;
-    if (filter === 'glutenFree') return flavor.isGlutenFree;
-    return true;
-  });
+const HomePage: React.FC<HomePageProps> = ({ flavors }) => {
+  const { setOrderList } = useOrder();
 
   return (
-    <div className='home-page'>
-      <h1>hi there! this is our online ice cream shop</h1>
-      <button className="filter-button" onClick={() => setFilter('kosher')}>
-          Kosher
-        </button>
-        <button className="filter-button" onClick={() => setFilter('dairyFree')}>
-          Dairy Free
-        </button>
-        <button className="filter-button" onClick={() => setFilter('glutenFree')}>
-          Gluten Free
-        </button>
-        <button className="filter-button" onClick={() => setFilter('all')}>
-          Reset
-        </button>
-      <div className='flavors-grid'>
-        {filteredFlavors.map((flavor) => { return(<FlavorConstarctor setOrderList={setOrderList} price={flavor.price} key={flavor.key} name={flavor.name} color={flavor.color || 'white'}/>)})}
+    <div className="home-page">
+      <h1>Welcome to the Ice Cream Shop!</h1>
+      <div className="flavors-grid">
+        {flavors.map((flavor) => (
+          <FlavorConstarctor
+            key={flavor.key}
+            setOrderList={setOrderList}
+            name={flavor.name}
+            color={flavor.color || 'white'}
+            price={flavor.price}
+          />
+        ))}
       </div>
     </div>
-    
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

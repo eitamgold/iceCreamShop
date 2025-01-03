@@ -1,4 +1,5 @@
 import React from 'react';
+import { useOrder } from '../OrderContext';
 
 type Flavor = {
   name: string;
@@ -12,17 +13,16 @@ type Flavor = {
 
 type OrderProps = {
   flavors: Flavor[];
-  orderList: string[];
 };
 
-const Order: React.FC<OrderProps> = ({ flavors, orderList }) => {
-  // Count the occurrences of each flavor in the orderList
+const Order: React.FC<OrderProps> = ({ flavors }) => {
+  const { orderList } = useOrder();
+
   const flavorCounts = orderList.reduce((acc: Record<string, number>, flavorName) => {
     acc[flavorName] = (acc[flavorName] || 0) + 1;
     return acc;
   }, {});
 
-  // Generate the order summary
   const orderSummary = Object.entries(flavorCounts).map(([flavorName, count]) => {
     const flavor = flavors.find((f) => f.name === flavorName);
     if (!flavor) return null;
